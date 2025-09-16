@@ -1,0 +1,19 @@
+{
+  "name": "blogapp",
+  "version": "1.0.0",
+  "description": "blogapp",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anantjain-afk/Mern_Blog_app.git"
+  },
+  "author": "anant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anantjain-afk/Mern_Blog_app/issues"
+  },
+  "homepage": "https://github.com/anantjain-afk/Mern_Blog_app#readme"
+}

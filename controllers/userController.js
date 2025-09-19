@@ -43,14 +43,12 @@ async function createUser(req, res) {
 async function getAllUsers(req, res) {
   try {
     const users = await userModel.find({});
-    return res
-      .status(200)
-      .json({
-        userCount: users.length,
-        message: "Users fetched successfully",
-        success: true,
-        users,
-      });
+    return res.status(200).json({
+      userCount: users.length,
+      message: "Users fetched successfully",
+      success: true,
+      users,
+    });
   } catch (error) {
     console.log(error);
     return res
@@ -68,7 +66,7 @@ async function loginUser(req, res) {
       return res
         .status(400)
         .json({ message: "All fields are required", success: false });
-    }   
+    }
     const user = await userModel.findOne({ email });
     if (!user) {
       return res
@@ -76,13 +74,15 @@ async function loginUser(req, res) {
         .json({ message: "email is not registered", success: false });
     }
     // Comparing the password with hashed password .
-     const isMatch = await bcrypt.compare(password, user.password);
-     if(!isMatch){
-        return res.status(401).json({message:"Invalid credentials",success:false});
-     }
-     return res.status(200).json({message:"Login successful",success:true,user});
-
-
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res
+        .status(401)
+        .json({ message: "Invalid credentials", success: false });
+    }
+    return res
+      .status(200)
+      .json({ message: "Login successful", success: true, user });
   } catch (error) {
     console.log(error);
     return res

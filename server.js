@@ -11,6 +11,7 @@ dotenv.config();
 
 // importing routes form routes folder :
 const userRoutes = require("./routes/userRoutes");
+const blogRoutes = require("./routes/blogRoutes");
 
 // mongoDB connection :
 connectDB();
@@ -28,6 +29,7 @@ const port = process.env.PORT || 8080;
 
 // routes :
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/blogs", blogRoutes);
 
 app.listen(port, () => {
   console.log(`server running on port no. ${port}`.bgCyan.white);

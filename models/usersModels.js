@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
 },{timestamps:true} )// this will add createdAt and updatedAt fields to our document automatically)
 
 
-const UserModel = mongoose.model('Users',userSchema); // here 'Users' is the name of the collection in the database and userSchema is the schema we created above .
+const UserModel = mongoose.model('User',userSchema); // here 'Users' is the name of the collection in the database and userSchema is the schema we created above .
 
 module.exports = UserModel;
 

@@ -5,6 +5,7 @@ const {
   updateBlog,
   deleteBlog,
   getBlogById,
+  userBlogs,
 } = require("../controllers/blogControllers");
 
 // router object to perform routing :
@@ -24,4 +25,7 @@ router.delete("/delete-blog/:id", deleteBlog);
 // get blog by id || GET :
 router.get("/get-blog/:id", getBlogById);
 
+
+// get user-blogs || GET :
+router.get("/userBlogs/:id",userBlogs);
 module.exports = router;

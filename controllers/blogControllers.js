@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 // get all blogs :
 exports.getAllBlogs = async (req, res) => {
   try {
-    const blogs = await blogModel.find({});
+    // console.log("working")
+    const blogs = await blogModel.find({}).populate("userId");
+    // console.log('blogs',blogs)
     if (blogs.length === 0) {
       return res
         .status(200)
@@ -142,7 +144,7 @@ exports.getBlogById = async (req, res) => {
 
 exports.userBlogs = async (req, res) => {
   try {
-    const userId  = req.params.id;
+    const userId = req.params.id;
     // console.log(userId)
     const userAndBlogs = await UserModel.findById(userId).populate("blogs");
 
@@ -151,15 +153,15 @@ exports.userBlogs = async (req, res) => {
         .status(404)
         .json({ success: false, message: "blogs not found with this Id" });
     }
-    return res.status(200).json({success:true,message:"user Blogs",userAndBlogs})
+    return res
+      .status(200)
+      .json({ success: true, message: "user Blogs", userAndBlogs });
   } catch (error) {
     console.error(error);
-    return res
-      .status(400)
-      .json({
-        success: false,
-        message: "error while getting user blogs",
-        error,
-      });
+    return res.status(400).json({
+      success: false,
+      message: "error while getting user blogs",
+      error,
+    });
   }
 };
